@@ -48,7 +48,7 @@ The solution adapts automatically to images with high blue hues and computes gai
 
 Clone the repository:
 ```bash
-git clone https://github.com/your-username/underwater-image-enhancement.git
+git clone https://github.com/solitary22EE/Main-project.git
 cd underwater-image-enhancement
 ```
 
