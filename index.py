@@ -4,7 +4,7 @@ import pywt
 
 def wavelet_transform_enhancement(image_path):
     # Load the underwater image
-    img = cv2.imread(image_path)
+    img = cv2.imread("input_images\\8_img_.png")
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
     # Convert the image to YCrCb color space
