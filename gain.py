@@ -78,13 +78,13 @@ def process_folder(input_folder, hr_folder, output_folder):
             
             # Apply corrections selectively
             if corrections_needed['R']:
-                r_channel = apply_gain_control(r_channel, 0.6)  # Reduced red intensity further
+                r_channel = apply_gain_control(r_channel, 0.2)  # Reduced red intensity further
                 r_channel = equalize_channel(r_channel)
             if corrections_needed['G']:
-                g_channel = apply_gain_control(g_channel, 1.2)
+                g_channel = apply_gain_control(g_channel, 0.3)
                 g_channel = equalize_channel(g_channel)
             if corrections_needed['B']:
-                b_channel = apply_gain_control(b_channel, 1.2)
+                b_channel = apply_gain_control(b_channel, 0.4)
                 b_channel = equalize_channel(b_channel)
             
             # Merge adjusted channels back into an image
