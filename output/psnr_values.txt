@@ -1,4 +1,0 @@
-PSNR Values:
-Input vs HR: 22.79 dB
-Corrected vs HR: 16.93 dB
-Input vs Corrected: 21.95 dB
