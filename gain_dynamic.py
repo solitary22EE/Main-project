@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import os
 
 def gain_control(image, gain_factors):
     """
@@ -30,23 +31,29 @@ def gain_control(image, gain_factors):
 
     return adjusted_image
 
-# Load the image
-image_path = r"D:\Mainproject\Main-project\inputimages\set_u40 (1).jpg"  # Replace with your image path
-image = cv2.imread(image_path)
+# Define the input and output folders
+input_folder = r"D:\Mainproject\Main-project\inputimages"  # Replace with your input folder path
+output_folder = r"D:\Mainproject\Main-project\outputimages"  # Replace with your output folder path
+os.makedirs(output_folder, exist_ok=True)  # Create the output folder if it doesn't exist
 
 # Define gain factors for R, G, B channels
 gain_factors = (1.5, 1.0, 1.2)  # Example gain factors
 
-# Apply gain control
-corrected_image = gain_control(image, gain_factors)
+# Process each image in the input folder
+for image_name in os.listdir(input_folder):
+    if image_name.lower().endswith(('.jpg', '.jpeg', '.png', '.bmp')):  # Filter image files
+        input_path = os.path.join(input_folder, image_name)
+        output_path = os.path.join(output_folder, image_name)
 
-# Display the original and corrected images
-cv2.imshow('Original Image', image)
-cv2.imshow('Corrected Image', corrected_image)
+        # Read the image
+        image = cv2.imread(input_path)
 
-# Wait for a key press and close the image windows
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+        # Apply gain control
+        corrected_image = gain_control(image, gain_factors)
 
-# Optionally, save the corrected image
-cv2.imwrite('corrected_image.jpg', corrected_image)
+        # Save the corrected image
+        cv2.imwrite(output_path, corrected_image)
+        print(f"Processed and saved: {output_path}")
+
+print("All images have been processed and saved in the output folder.")
+
